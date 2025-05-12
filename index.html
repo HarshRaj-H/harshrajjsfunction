@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Programs</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background: linear-gradient(to right, #e0f7fa, #e1bee7);
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      color: #4a148c;
+      text-shadow: 1px 1px 2px #ccc;
+    }
+    .program {
+      background: white;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-left: 6px solid #7b1fa2;
+    }
+    h2 {
+      color: #6a1b9a;
+      font-size: 1.5em;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 8px 5px 8px 0;
+      border: 2px solid #ba68c8;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #7e57c2;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #5e35b1;
+    }
+    p {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    #colorButton {
+      background-color: #f06292;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ JavaScript Programs ✨</h1>
+
+  <div class="program">
+    <h2>1. Prime or Not</h2>
+    <input type="number" id="primeInput" placeholder="Enter a number">
+    <button onclick="checkPrime()">Check Prime</button>
+    <p id="primeResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>2. Even or Odd</h2>
+    <input type="number" id="evenoddInput" placeholder="Enter a number">
+    <button onclick="checkEvenOdd()">Check</button>
+    <p id="evenoddResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>3. Calculator</h2>
+    <input type="number" id="calc1"> 
+    <select id="operation">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="number" id="calc2">
+    <button onclick="calculate()">Calculate</button>
+    <p id="calcResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>4. Button Color Toggle</h2>
+    <button id="colorButton" onclick="toggleColor()">Toggle Color</button>
+  </div>
+
+  <div class="program">
+    <h2>5. Counter</h2>
+    <button onclick="decrement()">-</button>
+    <span id="count">0</span>
+    <button onclick="increment()">+</button>
+  </div>
+
+  <div class="program">
+    <h2>6. Reverse String</h2>
+    <input type="text" id="reverseInput" placeholder="Enter a string">
+    <button onclick="reverseString()">Reverse</button>
+    <p id="reverseResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>7. Palindrome Checker</h2>
+    <input type="text" id="palInput" placeholder="Enter text">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="palResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>8. Factorial</h2>
+    <input type="number" id="factInput" placeholder="Enter a number">
+    <button onclick="factorial()">Calculate</button>
+    <p id="factResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>9. Sum of Digits</h2>
+    <input type="number" id="sumDigitInput">
+    <button onclick="sumDigits()">Find Sum</button>
+    <p id="sumDigitResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>10. Temperature Converter (°C to °F)</h2>
+    <input type="number" id="tempInput">
+    <button onclick="convertTemp()">Convert</button>
+    <p id="tempResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>11. Random Number (1-100)</h2>
+    <button onclick="randomNumber()">Generate</button>
+    <p id="randomResult"></p>
+  </div>
+
+  <div class="program">
+    <h2>12. Square of a Number</h2>
+    <input type="number" id="squareInput">
+    <button onclick="squareNum()">Get Square</button>
+    <p id="squareResult"></p>
+  </div>
+
+  <script>
+    function checkPrime() {
+      let n = parseInt(document.getElementById('primeInput').value);
+      if (n < 2) return document.getElementById('primeResult').innerText = 'Not Prime';
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return document.getElementById('primeResult').innerText = 'Not Prime';
+      }
+      document.getElementById('primeResult').innerText = 'Prime';
+    }
+
+    function checkEvenOdd() {
+      let n = parseInt(document.getElementById('evenoddInput').value);
+      document.getElementById('evenoddResult').innerText = n % 2 === 0 ? 'Even' : 'Odd';
+    }
+
+    function calculate() {
+      let a = parseFloat(document.getElementById('calc1').value);
+      let b = parseFloat(document.getElementById('calc2').value);
+      let op = document.getElementById('operation').value;
+      let result = eval(`${a} ${op} ${b}`);
+      document.getElementById('calcResult').innerText = `Result: ${result}`;
+    }
+
+    function toggleColor() {
+      let btn = document.getElementById('colorButton');
+      btn.style.backgroundColor = btn.style.backgroundColor === 'lightblue' ? 'lightgreen' : 'lightblue';
+    }
+
+    let count = 0;
+    function increment() {
+      count++;
+      document.getElementById('count').innerText = count;
+    }
+    function decrement() {
+      count--;
+      document.getElementById('count').innerText = count;
+    }
+
+    function reverseString() {
+      let str = document.getElementById('reverseInput').value;
+      document.getElementById('reverseResult').innerText = str.split('').reverse().join('');
+    }
+
+    function checkPalindrome() {
+      let str = document.getElementById('palInput').value;
+      let reversed = str.split('').reverse().join('');
+      document.getElementById('palResult').innerText = (str === reversed) ? 'Palindrome' : 'Not a Palindrome';
+    }
+
+    function factorial() {
+      let n = parseInt(document.getElementById('factInput').value);
+      let res = 1;
+      for (let i = 2; i <= n; i++) res *= i;
+      document.getElementById('factResult').innerText = `Factorial: ${res}`;
+    }
+
+    function sumDigits() {
+      let n = document.getElementById('sumDigitInput').value;
+      let sum = 0;
+      for (let digit of n) sum += parseInt(digit);
+      document.getElementById('sumDigitResult').innerText = `Sum: ${sum}`;
+    }
+
+    function convertTemp() {
+      let c = parseFloat(document.getElementById('tempInput').value);
+      let f = (c * 9/5) + 32;
+      document.getElementById('tempResult').innerText = `Fahrenheit: ${f.toFixed(2)}°F`;
+    }
+
+    function randomNumber() {
+      let rand = Math.floor(Math.random() * 100) + 1;
+      document.getElementById('randomResult').innerText = `Random Number: ${rand}`;
+    }
+
+    function squareNum() {
+      let n = parseFloat(document.getElementById('squareInput').value);
+      document.getElementById('squareResult').innerText = `Square: ${n * n}`;
+    }
+  </script>
+</body>
+</html>
